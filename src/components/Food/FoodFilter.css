@@ -1,0 +1,21 @@
+.food-filter {
+    color: white;
+    padding: 0 1rem;
+  }
+  
+  .food-filter__control {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin: 1rem 0;
+  }
+
+  .react-datepicker__input-container input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 10rem;
+    max-width: 100%;
+  }

@@ -1,0 +1,12 @@
+footer{
+    width: 100%;
+    display: flex;
+    background: #191b19;
+    position: fixed;
+    justify-content: center;
+    bottom: 0;
+}
+
+footer h3 {
+    color: #04632e;
+}
