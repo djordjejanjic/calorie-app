@@ -1,9 +1,11 @@
 import './FoodDate.css';
 
 const FoodDate = (props) => {
-    
-    const day = props.date.toLocaleString("en-US", { day: "2-digit" });
-    const month = props.date.toLocaleString("en-US", { month: "long"});
+
+    const foodDate = new Date(props.date);
+
+    const day = foodDate.toLocaleString("en-US", { day: "2-digit" });
+    const month = foodDate.toLocaleString("en-US", { month: "long"});
     // const year = props.date.getFullYear();
     
     return (

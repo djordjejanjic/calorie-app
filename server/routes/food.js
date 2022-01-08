@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    Food.find().select('-__v').then((activities) => res.status(200).send(activities)).catch(err => res.status(400).send(err));
+    Food.find().select('-__v').then((foods) => res.status(200).send(foods)).catch(err => res.status(400).send(err));
 });
 
 router.get('/:id', (req, res) => {

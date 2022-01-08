@@ -5,6 +5,9 @@ import Card from "../UI/Card";
 const FoodItem = (props) => {
     console.log('kk');
     console.log(props.date);
+
+
+
   return (
     <li>
       <Card className="food-item">

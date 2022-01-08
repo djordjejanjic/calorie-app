@@ -1,8 +1,9 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import "./App.css";
 import Food from "./components/Food/Food";
 import NewFood from "./components/NewFood/NewFood";
 import Navbar from "./components/Navbar/Navbar";
+import axios from "axios";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Contact from "./components/Contact/Contact";
 
@@ -29,7 +30,13 @@ const FOOD_DIARY = [
 
 const App = () => {
 
-    const [food, setFood] = useState(FOOD_DIARY);
+    const [food, setFood] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/food').then(res => {
+            setFood(res.data);
+        }).catch(err => console.log(err));
+    }, []);
 
     const addFoodHandler = (food) => {
         setFood((prevFood) => {
@@ -42,6 +49,7 @@ const App = () => {
                 <Switch>
                 <Route path='/' exact>
                     <NewFood onAddFood={addFoodHandler}></NewFood>
+                    {console.log(food)}
                     <Food foodDiary={food}></Food>
                 </Route>
                 <Route path='/kontakt'>

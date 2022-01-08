@@ -13,7 +13,9 @@ app.use(express.json());
 app.use('/users', users);
 app.use('/food', food);
 
-const MONGO_URL = `mongodb+srv://djordje:Zvezda91@cluster0.7ddx7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const MONGO_URL = `mongodb+srv://djordje:Zvezda91@cluster0.7ddx7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+`;
 // noinspection JSCheckFunctionSignatures
 mongoose.connect(MONGO_URL, {useNewUrlParser: true});
 

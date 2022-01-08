@@ -14,18 +14,21 @@ const Food = (props) => {
   };
 
   const filteredFood = props.foodDiary.filter((food) => {
-    // console.log("date"+food.date === filteredDate);
-    // console.log("filterdate"+filteredDate);
+    //  console.log("date"+food.date === filteredDate);
+    //  console.log("filterdate"+filteredDate);
     // console.log("realdate"+food.date)
 
-    const foodDay = food.date.toLocaleString("en-US", { day: "2-digit" });
-    const foodMonth = food.date.toLocaleString("en-US", { month: "long"});
-    const foodYear = food.date.getFullYear();
+      const foodDate = new Date(food.date);
+
+    const foodDay = foodDate.toLocaleString("en-US", { day: "2-digit" });
+    const foodMonth = foodDate.toLocaleString("en-US", { month: "long"});
+   const foodYear = foodDate.getFullYear();
 
     const filteredDay = filteredDate.toLocaleString("en-US", { day: "2-digit" });
     const filteredMonth = filteredDate.toLocaleString("en-US", { month: "long"});
-    const filteredYear = filteredDate.getFullYear();
-
+   const filteredYear = filteredDate.getFullYear();
+    console.log("f"+foodDay)
+      console.log(filteredDay)
     return (foodDay === filteredDay) && (foodMonth === filteredMonth) && (foodYear === filteredYear);
   });
 

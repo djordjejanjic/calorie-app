@@ -2,6 +2,7 @@ import {useState} from "react";
 import "./FoodForm.css";
 import Navbar from "../Navbar/Navbar";
 import React from 'react';
+import axios from "axios";
 
 const FoodForm = (props) => {
 
@@ -25,12 +26,16 @@ const FoodForm = (props) => {
         event.preventDefault();
 
         const foodData = {
+            username: "djordje",
             name: enteredName,
             calories: enteredCalories,
             date: new Date(enteredDate)
         }
 
         props.onSaveFoodData(foodData);
+
+        axios.post("http://localhost:5000/food", {username: "djordje", name: enteredName, calories: enteredCalories, date: enteredDate})
+
         setName('');
         setCalories('');
         setDate('');
