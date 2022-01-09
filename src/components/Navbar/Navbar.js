@@ -2,13 +2,18 @@ import classes from "./Navbar.module.css";
 import {Link} from "react-router-dom";
 
 const Navbar = () => {
+
+    const logoutHandler = () => {
+        sessionStorage.removeItem("username");
+    }
+
     return (
         <nav>
             <ul className={classes.navbar}>
 
                 <Link to="/home">Početna</Link>
                 <Link to="/kontakt">Kontakt</Link>
-                <Link to="/logout">Odjavi se</Link>
+                <Link to="/" onClick={logoutHandler}>Odjavi se</Link>
             </ul>
         </nav>
     );
