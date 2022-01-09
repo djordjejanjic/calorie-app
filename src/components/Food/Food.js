@@ -41,7 +41,7 @@ const Food = (props) => {
           onChangeFilter={filterChangeHandler}
         ></FoodFilter>
         
-        <FoodList foodItem={filteredFood} />
+        <FoodList foodItem={filteredFood} deleted={props.deleted}/>
 
       </Card>
       <Footer />

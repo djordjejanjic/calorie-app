@@ -6,9 +6,9 @@ const Navbar = () => {
         <nav>
             <ul className={classes.navbar}>
 
-                <Link to="/">Početna</Link>
+                <Link to="/home">Početna</Link>
                 <Link to="/kontakt">Kontakt</Link>
-
+                <Link to="/logout">Odjavi se</Link>
             </ul>
         </nav>
     );

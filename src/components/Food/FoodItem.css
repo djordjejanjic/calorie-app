@@ -8,6 +8,17 @@
     border-radius: 12px;
     background-color: #4b4b4b;
   }
+
+.food-item__delete p {
+  color:white;
+  font-weight: bold;
+  padding-right: 0.5rem;
+}
+
+.food-item__delete p:hover {
+  cursor: pointer;
+  color: #16272c;
+}
   
   .food-item__description {
     display: flex;

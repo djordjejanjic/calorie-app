@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar/Navbar";
 import axios from "axios";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Contact from "./components/Contact/Contact";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
 
 const FOOD_DIARY = [
     {
@@ -31,12 +33,34 @@ const FOOD_DIARY = [
 const App = () => {
 
     const [food, setFood] = useState([]);
+    const [deleted, setDeleted] = useState(false);
+    const [user, setUsername] = useState(null);
+    const [render, setRender] = useState(false);
 
     useEffect(() => {
+        get().then(res => {
+            console.log(res);
+
+            setRender(true);
+
+        });
+        return () => {
+            setRender(true);
+        }
+    }, [deleted, user, render]);
+
+    const get = async () => {
         axios.get('http://localhost:5000/food').then(res => {
-            setFood(res.data);
-        }).catch(err => console.log(err));
-    }, []);
+                //console.log("user"+username);
+                //console.log(res.data);
+                const username = sessionStorage.getItem("username");
+                setUsername(username);
+                setFood(res.data.filter(food => food.username === user));
+                return true;
+            }
+        ).catch(err => console.log(err));
+
+    }
 
     const addFoodHandler = (food) => {
         setFood((prevFood) => {
@@ -44,19 +68,28 @@ const App = () => {
         });
     };
 
+    const deletedF = (data) => {
+        setDeleted(data);
+    }
+
     return (
-            <Router>
-                <Switch>
+        <Router>
+            <Switch>
                 <Route path='/' exact>
+                    <Login />
+                </Route>
+                <Route path='/home' exact>
                     <NewFood onAddFood={addFoodHandler}></NewFood>
-                    {console.log(food)}
-                    <Food foodDiary={food}></Food>
+                    <Food foodDiary={food} deleted={deletedF}></Food>
+                </Route>
+                <Route path='/registracija'>
+                    <Register />
                 </Route>
                 <Route path='/kontakt'>
-                    <Contact />
+                    <Contact/>
                 </Route>
-                </Switch>
-            </Router>
+            </Switch>
+        </Router>
     );
 }
 

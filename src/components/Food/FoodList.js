@@ -23,6 +23,7 @@ if(props.foodItem.length === 0){
           name={food.name}
           calories={food.calories}
           date={food.date}
+          deleted={props.deleted}
         />
     ))}
 

@@ -33,8 +33,8 @@ const FoodForm = (props) => {
         }
 
         props.onSaveFoodData(foodData);
-
-        axios.post("http://localhost:5000/food", {username: "djordje", name: enteredName, calories: enteredCalories, date: enteredDate})
+        const username = sessionStorage.getItem("username")
+        axios.post("http://localhost:5000/food", {username: username, name: enteredName, calories: enteredCalories, date: enteredDate})
 
         setName('');
         setCalories('');
