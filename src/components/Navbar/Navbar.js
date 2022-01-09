@@ -5,6 +5,7 @@ const Navbar = () => {
 
     const logoutHandler = () => {
         sessionStorage.removeItem("username");
+        console.log('');
     }
 
     return (
