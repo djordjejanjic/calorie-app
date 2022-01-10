@@ -15,10 +15,10 @@ if(props.foodItem.length === 0){
 
   return (
     <ul className='food-list'>
-    { props.foodItem.map((food) => (
+    { props.foodItem.map((food, index) => (
 
         <FoodItem
-          key={food._id}
+          key={index}
           id={food._id}
           name={food.name}
           calories={food.calories}
