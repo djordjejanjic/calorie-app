@@ -1,13 +1,14 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect, Suspense, Fragment} from "react";
 import "./App.css";
 import Food from "./components/Food/Food";
 import NewFood from "./components/NewFood/NewFood";
 import Navbar from "./components/Navbar/Navbar";
 import axios from "axios";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Contact from "./components/Contact/Contact";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
+
+const Contact = React.lazy(() => import('./components/Contact/Contact'));
 
 const FOOD_DIARY = [
     {
@@ -73,23 +74,27 @@ const App = () => {
     }
 
     return (
-        <Router>
-            <Switch>
-                <Route path='/' exact>
-                    <Login />
-                </Route>
-                <Route path='/home' exact>
-                    <NewFood onAddFood={addFoodHandler}></NewFood>
-                    <Food foodDiary={food} deleted={deletedF}></Food>
-                </Route>
-                <Route path='/registracija'>
-                    <Register />
-                </Route>
-                <Route path='/kontakt'>
-                    <Contact/>
-                </Route>
-            </Switch>
-        </Router>
+        <Fragment>
+            <Suspense fallback={<p>Loading...</p>}>
+                <Router>
+                    <Switch>
+                        <Route path='/' exact>
+                            <Login/>
+                        </Route>
+                        <Route path='/home' exact>
+                            <NewFood onAddFood={addFoodHandler}></NewFood>
+                            <Food foodDiary={food} deleted={deletedF}></Food>
+                        </Route>
+                        <Route path='/registracija'>
+                            <Register/>
+                        </Route>
+                        <Route path='/kontakt'>
+                            <Contact/>
+                        </Route>
+                    </Switch>
+                </Router>
+            </Suspense>
+        </Fragment>
     );
 }
 
