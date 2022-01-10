@@ -5,7 +5,7 @@ import Footer from "../UI/Footer/Footer";
 import axios from "axios";
 import {useHistory} from "react-router";
 
-const Register = () => {
+const Login = (props) => {
     const [enteredUsername, setEnteredUsername] = useState("");
     const [enteredPassword, setEnteredPassword] = useState("");
 
@@ -60,6 +60,7 @@ const Register = () => {
                 setSuccess(true);
                 setShow(true);
                 sessionStorage.setItem("username", enteredUsername);
+                props.user(enteredUsername);
                 history.push('/home')
             } else {
                 throw new Error('Ne postoji user');
@@ -111,4 +112,4 @@ const Register = () => {
     );
 }
 
-export default Register;
+export default Login;

@@ -73,13 +73,17 @@ const App = () => {
         setDeleted(data);
     }
 
+    const setUsernameHandler = (loggedIn) => {
+        setUsername(loggedIn);
+    }
+
     return (
         <Fragment>
             <Suspense fallback={<p>Loading...</p>}>
                 <Router>
                     <Switch>
                         <Route path='/' exact>
-                            <Login/>
+                            <Login user={setUsernameHandler}/>
                         </Route>
                         <Route path='/home' exact>
                             <NewFood onAddFood={addFoodHandler}></NewFood>
